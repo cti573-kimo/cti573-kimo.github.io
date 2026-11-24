@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>教育概論筆記</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:      #0d1f3c;
+      --navy-mid:  #1a3a6c;
+      --accent:    #c8922a;
+      --accent-lt: #f0d08a;
+      --bg:        #faf8f3;
+      --bg-alt:    #f3efe6;
+      --bg-card:   #ffffff;
+      --text:      #1e1e1e;
+      --text-muted:#555;
+      --border:    #d9cdb8;
+      --green-lt:  #e8f5e9;
+      --yellow-lt: #fffde7;
+      --blue-lt:   #e3eeff;
+      --radius:    8px;
+      --shadow:    0 2px 12px rgba(13,31,60,.09);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--navy);
+      color: #fff;
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(0,0,0,.3);
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 14px 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .site-title {
+      font-family: 'DM Serif Display', 'Noto Serif TC', serif;
+      font-size: 1.4rem;
+      letter-spacing: .04em;
+      white-space: nowrap;
+      color: var(--accent-lt);
+    }
+    .site-subtitle {
+      font-size: .8rem;
+      color: rgba(255,255,255,.55);
+      letter-spacing: .1em;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--navy-mid);
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 0;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    nav li a {
+      display: block;
+      padding: 10px 16px;
+      color: rgba(255,255,255,.8);
+      text-decoration: none;
+      font-size: .82rem;
+      transition: color .2s, background .2s;
+      border-bottom: 3px solid transparent;
+    }
+    nav li a:hover {
+      color: var(--accent-lt);
+      border-bottom-color: var(--accent);
+      background: rgba(255,255,255,.05);
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 32px 80px;
+    }
+
+    /* ── SECTION BLOCK ── */
+    .section-block {
+      margin-bottom: 56px;
+      scroll-margin-top: 90px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--navy);
+    }
+    .section-num {
+      width: 36px; height: 36px;
+      background: var(--navy);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .78rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .section-heading h2 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .section-heading .sub {
+      font-size: .8rem;
+      color: var(--text-muted);
+      margin-left: 4px;
+    }
+
+    /* ── SUBSECTION ── */
+    .sub-heading {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--navy-mid);
+      margin: 20px 0 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sub-heading::before {
+      content: '';
+      display: inline-block;
+      width: 4px; height: 1em;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* ── TABLE ── */
+    table.note-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .88rem;
+      margin: 10px 0 18px;
+      background: var(--bg-card);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    table.note-table th {
+      background: var(--navy);
+      color: #fff;
+      padding: 9px 14px;
+      text-align: left;
+      font-weight: 500;
+      font-size: .82rem;
+    }
+    table.note-table td {
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    table.note-table tr:last-child td { border-bottom: none; }
+    table.note-table tr:nth-child(even) td { background: var(--bg-alt); }
+    table.note-table td.label {
+      width: 160px;
+      font-weight: 600;
+      color: var(--navy-mid);
+      white-space: nowrap;
+    }
+    table.note-table td.key-person {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* ── CARD GRID ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      margin: 16px 0;
+    }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+    }
+    .card-title {
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+      font-size: .92rem;
+    }
+    .card p { font-size: .86rem; color: var(--text-muted); }
+
+    /* ── HIGHLIGHT BLOCKS ── */
+    .hl-yellow { background: var(--yellow-lt); border-left: 4px solid #f0c040; padding: 10px 16px; border-radius: 0 var(--radius) var(--radius) 0; margin: 8px 0; }
+    .hl-blue   { background: var(--blue-lt);   border-left: 4px solid #4a7ce0; padding: 10px 16px; border-radius: 0 var(--radius) var(--radius) 0; margin: 8px 0; }
+    .hl-green  { background: var(--green-lt);  border-left: 4px solid #4caf60; padding: 10px 16px; border-radius: 0 var(--radius) var(--radius) 0; margin: 8px 0; }
+
+    /* ── INLINE KEY ── */
+    .key { color: var(--accent); font-weight: 700; }
+    .scholar { color: #1a6b9a; font-weight: 600; }
+    .tag {
+      display: inline-block;
+      background: var(--navy);
+      color: #fff;
+      font-size: .7rem;
+      padding: 1px 8px;
+      border-radius: 20px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* ── LIST ── */
+    .note-list {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0;
+    }
+    .note-list li {
+      padding: 5px 0 5px 22px;
+      position: relative;
+      font-size: .9rem;
+      border-bottom: 1px dashed var(--border);
+    }
+    .note-list li:last-child { border-bottom: none; }
+    .note-list li::before {
+      content: '◆';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: .6rem;
+      top: 9px;
+    }
+
+    /* ── BLOOM TAXONOMY ── */
+    .bloom-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin: 12px 0;
+    }
+    .bloom-level {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 16px;
+      border-radius: var(--radius);
+      font-size: .85rem;
+    }
+    .bloom-level .lv { font-weight: 700; color: var(--navy); width: 60px; flex-shrink: 0; }
+    .bloom-level .desc { color: var(--text-muted); }
+    .b1 { background: #fff3e0; }
+    .b2 { background: #ffe0b2; }
+    .b3 { background: #ffccbc; }
+    .b4 { background: #f8bbd0; }
+    .b5 { background: #e1bee7; }
+    .b6 { background: #c5cae9; }
+
+    /* ── TEACHING MODELS ── */
+    .model-row {
+      display: flex;
+      gap: 16px;
+      margin: 8px 0;
+      flex-wrap: wrap;
+    }
+    .model-box {
+      flex: 1;
+      min-width: 200px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--navy-mid);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      box-shadow: var(--shadow);
+    }
+    .model-box h4 { font-size: .88rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .model-box p  { font-size: .82rem; color: var(--text-muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,.5);
+      text-align: center;
+      padding: 24px;
+      font-size: .78rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .header-inner { padding: 12px 16px; }
+      .container    { padding: 24px 16px 60px; }
+      table.note-table td.label { width: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════ HEADER ════════ -->
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="site-title">教育概論筆記</div>
+      <div class="site-subtitle">INTRODUCTION TO EDUCATION — STUDY NOTES</div>
+    </div>
+  </div>
+</header>
+
+<!-- ════════ NAV ════════ -->
+<nav>
+  <ul>
+    <li><a href="#s1">教育概念</a></li>
+    <li><a href="#s2">教育本質</a></li>
+    <li><a href="#s3">教育目的</a></li>
+    <li><a href="#s4">教育功能</a></li>
+    <li><a href="#s5">教育類型</a></li>
+    <li><a href="#s6">生命教育</a></li>
+    <li><a href="#s7">教育心理學</a></li>
+    <li><a href="#s8">教育哲學</a></li>
+    <li><a href="#s9">教育社會學</a></li>
+    <li><a href="#s10">學校行政</a></li>
+    <li><a href="#s11">課程</a></li>
+    <li><a href="#s12">教學</a></li>
+    <li><a href="#s13">輔導</a></li>
+    <li><a href="#s14">教育研究</a></li>
+    <li><a href="#s15">時事問題</a></li>
+  </ul>
+</nav>
+
+<!-- ════════ MAIN ════════ -->
+<main class="container">
+
+  <!-- ── § 1 教育概念 ── -->
+  <section class="section-block" id="s1">
+    <div class="section-heading">
+      <div class="section-num">1</div>
+      <h2>教育概念 <span class="sub">Concept of Education</span></h2>
+    </div>
+
+    <div class="hl-blue">
+      「教育」一詞，最早出現在新石器時代核心文獻中。<br>
+      <strong>Education</strong> — 源自拉丁文，有「引出」之意，強調引發學習者內在潛能。
+    </div>
+
+    <div class="sub-heading">教育的涵義</div>
+    <table class="note-table">
+      <tr>
+        <td class="label">廣義</td>
+        <td>凡能影響人的身心發展之活動。包含家庭、學校及社會等各種環境中的影響。</td>
+      </tr>
+      <tr>
+        <td class="label">狹義</td>
+        <td>學校教育。具有特定的教育目的與教育內容，有固定的師生關係。</td>
+      </tr>
+    </table>
+
+    <div class="sub-heading">Peters 的教育三規準 <span class="key">（重要）</span></div>
+    <table class="note-table">
+      <thead><tr><th>規準</th><th>說明</th><th>核心</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">合認知性</td>
+          <td>教育傳遞有價值的知識，不能教導空洞無意義的事物。</td>
+          <td>教導者的責任</td>
+        </tr>
+        <tr>
+          <td class="label">合價值性</td>
+          <td>教育過程必須使學習者了解其所學為有價值之事。</td>
+          <td>學習者考量</td>
+        </tr>
+        <tr>
+          <td class="label">合自願性</td>
+          <td>教育過程中，尊重學習者的自由意志；教導者與學習者共同參與。</td>
+          <td>教學者與學習者的互動</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">教育的多元功能</div>
+    <ul class="note-list">
+      <li>使人由自然人成長為社會人</li>
+      <li>引導人向善的本質發展</li>
+      <li>促進個人與社會的文化傳遞與創新</li>
+      <li>教育兼具「社會化」與「個性化」的雙重目的</li>
+    </ul>
+
+    <div class="sub-heading">教育的時機</div>
+    <table class="note-table">
+      <thead><tr><th>類型</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">主觀論 <span class="key">（結果）</span></td>
+          <td>觀察行為的結果是否使人產生改變。</td>
+        </tr>
+        <tr>
+          <td class="label">動機論 <span class="key">（態度）</span></td>
+          <td>「教」與「學」同時存在，行為是否出現，看其動機，而非行為結果。</td>
+        </tr>
+        <tr>
+          <td class="label">無意圖、無動機</td>
+          <td>主要依賴動機（適時適機）。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">正式教育 vs 非正式教育</div>
+    <table class="note-table">
+      <tr>
+        <td class="label">廣義</td>
+        <td>包含學校以外，大眾傳播及家庭等。亦稱非制度化教育。</td>
+      </tr>
+      <tr>
+        <td class="label">狹義</td>
+        <td>學校教育。有特定教育目標與教育內容，故稱有目的教育。</td>
+      </tr>
+    </table>
+    <p style="margin-top:8px;font-size:.88rem;color:var(--text-muted)">離開學校後繼續進行的是<strong>繼續教育</strong>（繼續教育以外，一個組織系統化的教育稱「非正式教育」）；一個人在有意或無意間進行的活動，獲得知識、態度、價值、技能的稱<strong>非正式教育</strong>。</p>
+
+    <div class="sub-heading">教育的條件與可能</div>
+    <table class="note-table">
+      <tr><td>1. 教育的需要 — 人需在人的社會中方能成為真正的人</td></tr>
+      <tr><td>2. 教育的可能 — 人有可塑性，藉由潛能發展其可塑性。可塑性與最佳化</td></tr>
+      <tr><td>3. 遺傳與環境之爭
+        <br><span class="hl-green" style="margin-top:6px;display:block">
+          <strong>刺激論</strong>（行為主義，Watson，制約，強調環境）→ 教育萬能說<br>
+          <strong>成熟論</strong>（人文主義，重視動機與整體互動，自我實現，有強大驅動力）→ 教育無能說
+        </span>
+        <span style="font-size:.85rem;color:var(--text-muted)">對以上兩個極端，較多人認為：<br>
+          → 僅靠遺傳，只能具備更新與適應的功能，無法觸發人的潛能<br>
+          → 僅靠遺傳，除了提供知識外，還需要提供學習的經驗與教育<br>
+          <em>所以遺傳的影響確實很大，但並非無限大，有其無法改變之事</em>
+        </span>
+      </td></tr>
+    </table>
+
+    <div class="sub-heading">教育的場所</div>
+    <table class="note-table">
+      <thead><tr><th>類型</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">家庭教育</td>
+          <td>第一個接受教育的場所。<span class="scholar">盧梭</span>—回歸自然，提出個人應在模擬自然的環境中成長；<span class="scholar">裴斯泰洛齊</span>—母性的教育與個性的同時開始。</td>
+        </tr>
+        <tr>
+          <td class="label">學校教育</td>
+          <td>可以分為初等教育、中等教育、高等教育。<span class="key">School 是主要功能</span></td>
+        </tr>
+        <tr>
+          <td class="label">社會教育</td>
+          <td>又稱成人教育。繼續正規教育以外，以一般社會大眾為對象，繼續推動教育的一種。</td>
+        </tr>
+        <tr>
+          <td class="label">終身教育</td>
+          <td>綜合各種形式，融合各種。本質上、終身教育與社會教育、繼續教育是相同的；但終身教育強調整合性與縱向及橫向的課程整合。<span class="tag">反正規教育</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── § 2 教育本質 ── -->
+  <section class="section-block" id="s2">
+    <div class="section-heading">
+      <div class="section-num">2</div>
+      <h2>教育本質 <span class="sub">Nature of Education</span></h2>
+    </div>
+
+    <div class="hl-yellow">
+      三大教育學派（<span class="scholar">Peters</span> 的三個標準）：合認知性、合價值性、合自願性 → 教育「矯正導向」
+    </div>
+
+    <div class="sub-heading">教育本質與哲學的關聯</div>
+    <table class="note-table">
+      <tr>
+        <td class="label">本質問題 D</td>
+        <td>教育是一種矛盾，也是一種生命的歷程；所以必須視本質。教育便是生命，教育過程與本質是一體。</td>
+      </tr>
+      <tr>
+        <td class="label">哲學觀點</td>
+        <td>教育三大特性：<strong>合認知性、合價值性、合自願性</strong>（Peters）</td>
+      </tr>
+    </table>
+
+    <div class="sub-heading">教育本質的爭論</div>
+    <table class="note-table">
+      <thead><tr><th>觀點</th><th>代表人物</th><th>核心主張</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">有目的教育</td>
+          <td>多數學者</td>
+          <td>教育是一種有目的的活動，目的在引發人的發展潛能。</td>
+        </tr>
+        <tr>
+          <td class="label">無目的教育</td>
+          <td class="scholar">Dewey</td>
+          <td>教育即生活，教育即生長，教育無外在目的，過程即目的。</td>
+        </tr>
+        <tr>
+          <td class="label">教育即傳遞</td>
+          <td class="scholar">Peters</td>
+          <td>教育是將文化傳遞給下一代的過程，是一種「傳遞啟蒙」的行動。</td>
+        </tr>
+        <tr>
+          <td class="label">教育即藝術</td>
+          <td class="scholar">Herbart</td>
+          <td>教育是藝術，不同於科學，需要技術與靈感。</td>
+        </tr>
+        <tr>
+          <td class="label">教育即科學</td>
+          <td class="scholar">Comenius</td>
+          <td>教育可以像科學一樣系統化，有規律可循。</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── § 3 教育目的 ── -->
+  <section class="section-block" id="s3">
+    <div class="section-heading">
+      <div class="section-num">3</div>
+      <h2>教育目的 <span class="sub">Goals of Education</span></h2>
+    </div>
+
+    <div class="sub-heading">教育目的的類別</div>
+    <table class="note-table">
+      <thead><tr><th>類型</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">內在目的</td>
+          <td>教育活動本身即是目的，不需外在理由，教育本身就是價值所在。</td>
+        </tr>
+        <tr>
+          <td class="label">外在目的</td>
+          <td>教育是達成其他目標的手段，如個人發展、社會建設、國家富強等。</td>
+        </tr>
+        <tr>
+          <td class="label">個人本位主義</td>
+          <td>以個人自由發展為中心，強調個性發展、潛能開發（<span class="scholar">Rousseau、Spencer</span>）。</td>
+        </tr>
+        <tr>
+          <td class="label">社會本位主義</td>
+          <td>教育目的在使個人適應社會，以社會整體需求為依歸（<span class="scholar">Plato、Durkheim</span>）。</td>
+        </tr>
+        <tr>
+          <td class="label">文化主義</td>
+          <td>文化傳遞與創造為教育之目的（<span class="scholar">Spranger</span>）。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">Bloom 的教育目標分類 <span class="key">（重要）</span></div>
+    <div class="bloom-grid">
+      <div class="bloom-level b1"><div class="lv">知識 Knowledge</div><div class="desc">記憶、回憶已學知識</div></div>
+      <div class="bloom-level b2"><div class="lv">理解 Comprehension</div><div class="desc">解釋、說明意義</div></div>
+      <div class="bloom-level b3"><div class="lv">應用 Application</div><div class="desc">將知識運用於新情境</div></div>
+      <div class="bloom-level b4"><div class="lv">分析 Analysis</div><div class="desc">分解概念、找出關係</div></div>
+      <div class="bloom-level b5"><div class="lv">綜合 Synthesis</div><div class="desc">整合資訊、創造新觀念</div></div>
+      <div class="bloom-level b6"><div class="lv">評鑑 Evaluation</div><div class="desc">依據標準作出判斷</div></div>
+    </div>
+  </section>
+
+  <!-- ── § 4 教育功能 ── -->
+  <section class="section-block" id="s4">
+    <div class="section-heading">
+      <div class="section-num">4</div>
+      <h2>教育功能 <span class="sub">Functions of Education</span></h2>
+    </div>
+
+    <table class="note-table">
+      <thead><tr><th>功能</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">1. 使學習者自我確認</td>
+          <td>透過教育，學習者發現自我、確立身份認同。</td>
+        </tr>
+        <tr>
+          <td class="label">2. 激發創造力</td>
+          <td>教育應啟發而非壓制學生的創造力與想像力。</td>
+        </tr>
+        <tr>
+          <td class="label">3. 文化傳遞</td>
+          <td>將社會既有的知識、技能、規範、價值觀傳遞給下一代。</td>
+        </tr>
+        <tr>
+          <td class="label">4. 社會流動</td>
+          <td>教育作為社會流動的管道，改善個人的社會地位與機遇。</td>
+        </tr>
+        <tr>
+          <td class="label">5. 選擇功能</td>
+          <td>透過考試與評量，進行人才的篩選與分流。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="hl-yellow">
+      <strong>保守功能</strong>（文化傳遞）：延續既有文化與價值觀。<br>
+      <strong>改革功能</strong>（文化創新）：推動社會變革，培養批判性思維。
+    </div>
+  </section>
+
+  <!-- ── § 5 教育類型 ── -->
+  <section class="section-block" id="s5">
+    <div class="section-heading">
+      <div class="section-num">5</div>
+      <h2>教育類型 <span class="sub">Types of Education</span></h2>
+    </div>
+
+    <div class="sub-heading">下位主題</div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-title">正規教育（Formal Education）</div>
+        <p>有系統、有組織的學校教育體制，具有特定課程、師資與評量制度。</p>
+      </div>
+      <div class="card">
+        <div class="card-title">非正規教育（Non-formal Education）</div>
+        <p>有組織但在正規學校體制外進行的教育活動，如成人教育、職業訓練。</p>
+      </div>
+      <div class="card">
+        <div class="card-title">非正式教育（Informal Education）</div>
+        <p>日常生活中無意識的學習，從家庭、媒體、社會互動中自然獲得知識。</p>
+      </div>
+    </div>
+
+    <div class="sub-heading">觀察行為的時機（行為主義 vs 動機論）</div>
+    <table class="note-table">
+      <thead><tr><th>觀點</th><th>代表</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">主觀論（結果）</td>
+          <td class="scholar">行為主義</td>
+          <td>觀察行為結果是否使人產生改變（Watson 等人，強調刺激—制約）。</td>
+        </tr>
+        <tr>
+          <td class="label">動機論（態度）</td>
+          <td class="scholar">人文主義</td>
+          <td>主要看動機，而非行為的結果；強調人的自主意志與內在需求。</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── § 6 生命教育 ── -->
+  <section class="section-block" id="s6">
+    <div class="section-heading">
+      <div class="section-num">6</div>
+      <h2>生命教育 <span class="sub">Life Education</span></h2>
+    </div>
+
+    <div class="hl-blue">生命教育的重要議題：尊重生命、死亡教育、人生意義的探索。</div>
+
+    <div class="sub-heading">生命教育的發展與教育意涵</div>
+    <ul class="note-list">
+      <li>生命的進化與教育理念 — 強調個體生命的獨特價值。</li>
+      <li>生命教育課程，包含生死學、挫折教育、自我探索。</li>
+      <li>1998年臺灣推動「生命教育年」，落實於各級學校課程。</li>
+      <li>結合宗教、哲學與心理學，藉以建立生命的意義感。</li>
+    </ul>
+
+    <div class="sub-heading">生命教育與學校課程的結合</div>
+    <table class="note-table">
+      <tr>
+        <td class="label">推動重點</td>
+        <td>在課程中融入生命關懷，強調師生互動，增加多元學習情境，鼓勵感恩與珍惜。</td>
+      </tr>
+      <tr>
+        <td class="label">跨科整合</td>
+        <td>結合社會、自然、語文等學科，從整體角度探討生命的意涵。</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- ── § 7 教育心理學 ── -->
+  <section class="section-block" id="s7">
+    <div class="section-heading">
+      <div class="section-num">7</div>
+      <h2>教育心理學 <span class="sub">Educational Psychology</span></h2>
+    </div>
+
+    <div class="hl-yellow">
+      <strong>Wundt</strong> 建立心理學實驗室，使心理學成為獨立科學；心理學的研究始終關注教育歷程。
+    </div>
+
+    <div class="sub-heading">學習理論的主要流派</div>
+    <table class="note-table">
+      <thead><tr><th>理論</th><th>代表人物</th><th>核心概念</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">行為主義</td>
+          <td class="scholar">Watson、Skinner、Pavlov</td>
+          <td>刺激—反應聯結，學習是行為的改變，強調制約學習。</td>
+        </tr>
+        <tr>
+          <td class="label">認知主義</td>
+          <td class="scholar">Piaget、Bruner</td>
+          <td>學習是認知結構的改變，強調理解、記憶與思維的運作。</td>
+        </tr>
+        <tr>
+          <td class="label">人本主義</td>
+          <td class="scholar">Maslow、Rogers</td>
+          <td>強調學習者的自我實現、主動性與情感需求，以學習者為中心。</td>
+        </tr>
+        <tr>
+          <td class="label">社會學習</td>
+          <td class="scholar">Bandura</td>
+          <td>透過觀察與模仿他人進行學習，強調自我效能（Self-efficacy）。</td>
+        </tr>
+        <tr>
+          <td class="label">建構主義</td>
+          <td class="scholar">Vygotsky</td>
+          <td>學習者主動建構知識，強調近側發展區（ZPD）與社會互動。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">Piaget 認知發展階段</div>
+    <table class="note-table">
+      <thead><tr><th>階段</th><th>年齡</th><th>特徵</th></tr></thead>
+      <tbody>
+        <tr><td class="label">感覺動作期</td><td>0–2 歲</td><td>靠感覺與動作探索環境，物體恆存概念逐漸形成。</td></tr>
+        <tr><td class="label">前運思期</td><td>2–7 歲</td><td>使用語言與符號，以自我中心思考，尚未具備邏輯推理。</td></tr>
+        <tr><td class="label">具體運思期</td><td>7–11 歲</td><td>能進行具體的邏輯推理，理解守恆概念。</td></tr>
+        <tr><td class="label">形式運思期</td><td>11 歲以上</td><td>能進行抽象的假設性思考與演繹推理。</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">Maslow 需求層次理論</div>
+    <ul class="note-list">
+      <li><strong>生理需求</strong> — 食物、水、睡眠等基本生存需求。</li>
+      <li><strong>安全需求</strong> — 安全感、穩定的生活環境。</li>
+      <li><strong>歸屬與愛的需求</strong> — 友誼、親情與被接納。</li>
+      <li><strong>尊重需求</strong> — 自尊心與他人的肯定。</li>
+      <li><strong>自我實現需求</strong> — 發揮潛能、達成個人目標。</li>
+    </ul>
+  </section>
+
+  <!-- ── § 8 教育哲學 ── -->
+  <section class="section-block" id="s8">
+    <div class="section-heading">
+      <div class="section-num">8</div>
+      <h2>教育哲學 <span class="sub">Educational Philosophy</span></h2>
+    </div>
+
+    <div class="sub-heading">主要教育哲學流派</div>
+    <table class="note-table">
+      <thead><tr><th>學派</th><th>代表人物</th><th>主張</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">理想主義 Idealism</td>
+          <td class="scholar">Plato、Hegel</td>
+          <td>知識源自理性，重視精神與道德教育，強調真、善、美的理想。</td>
+        </tr>
+        <tr>
+          <td class="label">實在主義 Realism</td>
+          <td class="scholar">Aristotle</td>
+          <td>知識來自客觀世界，重視科學教育與現實世界的探索。</td>
+        </tr>
+        <tr>
+          <td class="label">實用主義 Pragmatism</td>
+          <td class="scholar">Dewey、James、Peirce</td>
+          <td>教育即生活，強調做中學（Learning by doing），問題解決為核心。</td>
+        </tr>
+        <tr>
+          <td class="label">存在主義 Existentialism</td>
+          <td class="scholar">Sartre、Buber</td>
+          <td>個人存在優先於本質，強調個體責任與自由選擇的教育。</td>
+        </tr>
+        <tr>
+          <td class="label">批判理論 Critical Theory</td>
+          <td class="scholar">Freire</td>
+          <td>教育應是解放人民的工具，「被壓迫者的教育學」，強調對話教學。</td>
+        </tr>
+        <tr>
+          <td class="label">後現代主義 Postmodernism</td>
+          <td class="scholar">Lyotard、Giroux</td>
+          <td>質疑宏大敘事，強調多元文化、差異性與去中心化的教育觀。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">Herbart 五段教學法 <span class="tag">傳統</span></div>
+    <ul class="note-list">
+      <li><strong>預備（Preparation）</strong>：複習舊知識，引起動機。</li>
+      <li><strong>提示（Presentation）</strong>：呈現新教材。</li>
+      <li><strong>比較（Comparison）</strong>：新舊知識連結比較。</li>
+      <li><strong>統合（Generalization）</strong>：歸納原則。</li>
+      <li><strong>應用（Application）</strong>：練習與實際應用。</li>
+    </ul>
+  </section>
+
+  <!-- ── § 9 教育社會學 ── -->
+  <section class="section-block" id="s9">
+    <div class="section-heading">
+      <div class="section-num">9</div>
+      <h2>教育社會學 <span class="sub">Educational Sociology</span></h2>
+    </div>
+
+    <div class="hl-blue">
+      <span class="scholar">Herbart</span> 以心理學確立教育的本質；以哲學建立教育學。
+    </div>
+
+    <div class="sub-heading">主要理論</div>
+    <table class="note-table">
+      <thead><tr><th>理論</th><th>代表</th><th>要點</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">功能論</td>
+          <td class="scholar">Durkheim、Parsons</td>
+          <td>教育維持社會結構的穩定，透過社會化傳遞規範與價值。</td>
+        </tr>
+        <tr>
+          <td class="label">衝突論</td>
+          <td class="scholar">Marx、Bowles &amp; Gintis</td>
+          <td>教育是統治階級複製與強化社會不平等的機制。</td>
+        </tr>
+        <tr>
+          <td class="label">符號互動論</td>
+          <td class="scholar">Mead、Cooley</td>
+          <td>師生在課室中的互動、標籤效應影響學生的學習與認同。</td>
+        </tr>
+        <tr>
+          <td class="label">文化再製論</td>
+          <td class="scholar">Bourdieu</td>
+          <td>文化資本（Cultural Capital）的差異導致社會不平等的再製。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">教育機會均等</div>
+    <ul class="note-list">
+      <li>入學機會的均等：消除種族、性別、階級的障礙。</li>
+      <li>受教過程的均等：提供同等的教育資源與師資品質。</li>
+      <li>教育結果的均等：補償性教育，照顧弱勢族群。</li>
+    </ul>
+  </section>
+
+  <!-- ── § 10 學校行政 ── -->
+  <section class="section-block" id="s10">
+    <div class="section-heading">
+      <div class="section-num">10</div>
+      <h2>學校行政與教育改革 <span class="sub">School Administration &amp; Reform</span></h2>
+    </div>
+
+    <div class="sub-heading">教育行政的功能</div>
+    <table class="note-table">
+      <thead><tr><th>功能</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">計畫（Planning）</td>
+          <td>設定教育目標，規劃達成的步驟與資源。</td>
+        </tr>
+        <tr>
+          <td class="label">組織（Organizing）</td>
+          <td>建立合理的組織架構，分配職責。</td>
+        </tr>
+        <tr>
+          <td class="label">領導（Leading）</td>
+          <td>激勵成員，引導組織朝目標前進。</td>
+        </tr>
+        <tr>
+          <td class="label">溝通（Communicating）</td>
+          <td>確保訊息的有效傳遞與理解。</td>
+        </tr>
+        <tr>
+          <td class="label">評鑑（Evaluating）</td>
+          <td>評估計畫執行成效，提供改進依據。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">臺灣教育改革重要議題</div>
+    <table class="note-table">
+      <tr><td>1994 年「四一〇教育改革」— 小班小校、廣設高中大學、推動教育現代化、制定教育基本法。</td></tr>
+      <tr><td>九年一貫課程（民國 90 年）— 強調統整課程，七大學習領域，十大基本能力。</td></tr>
+      <tr><td>十二年國民基本教育（103 年起）— 延長國教，強化適性教育。</td></tr>
+      <tr><td>108 課綱 — 核心素養導向，強調自主行動、溝通互動、社會參與三大面向。</td></tr>
+    </table>
+  </section>
+
+  <!-- ── § 11 課程 ── -->
+  <section class="section-block" id="s11">
+    <div class="section-heading">
+      <div class="section-num">11</div>
+      <h2>課程 <span class="sub">Curriculum</span></h2>
+    </div>
+
+    <div class="hl-yellow">課程（Curriculum）一詞源自拉丁文「跑道」，隱喻學生的學習歷程。</div>
+
+    <div class="sub-heading">課程的定義（主要角度）</div>
+    <table class="note-table">
+      <thead><tr><th>定義方式</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">科目說</td>
+          <td>課程是學科科目的集合，著重知識的系統傳遞。</td>
+        </tr>
+        <tr>
+          <td class="label">經驗說</td>
+          <td>課程是學習者在學校生活中的一切有意義的經驗。</td>
+        </tr>
+        <tr>
+          <td class="label">目標說</td>
+          <td>課程是達成教育目標的一系列計畫性活動。</td>
+        </tr>
+        <tr>
+          <td class="label">計畫說</td>
+          <td>課程是一種計畫文件，包含學習目標、內容、方法與評量。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">課程的類型</div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-title">正式課程（Official Curriculum）</div>
+        <p>由政府或學校正式規定，列入課程計畫的教學內容。</p>
+      </div>
+      <div class="card">
+        <div class="card-title">潛在課程（Hidden Curriculum）</div>
+        <p>學校文化中非正式傳遞的規範、態度、價值觀，學生在潛移默化中吸收。</p>
+      </div>
+      <div class="card">
+        <div class="card-title">空白課程（Null Curriculum）</div>
+        <p>學校未教導的知識與能力，即「被排除在外」的課程。</p>
+      </div>
+    </div>
+
+    <div class="sub-heading">課程目標</div>
+    <table class="note-table">
+      <thead><tr><th>層次</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">學校課程目標</td>
+          <td>與學校教育目的相近，是每個學校的課程目標。</td>
+        </tr>
+        <tr>
+          <td class="label">科目課程目標</td>
+          <td>為了達到課程具體效果，利用上進的啟發動機，引發學習者的思考。</td>
+        </tr>
+        <tr>
+          <td class="label">行為目標</td>
+          <td>課程目標的一種，以學生的行為表現描述；據此教師的教學意向訂定師生的主要互動範圍。具有以下特性：認知性、技能性、情意性、資訊性、多元性。</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── § 12 教學 ── -->
+  <section class="section-block" id="s12">
+    <div class="section-heading">
+      <div class="section-num">12</div>
+      <h2>教學 <span class="sub">Teaching / Instruction</span></h2>
+    </div>
+
+    <div class="hl-blue">
+      教學的要素包含：<strong>教學理論、教學行為（感知教學行為）、教學設計（GMI）、教學模式、教學評鑑</strong>。
+    </div>
+
+    <div class="sub-heading">感知教學行為</div>
+    <p style="margin-bottom:12px;font-size:.9rem">學生在學習過程中，以自己的角度判斷教師的教學是否有效：</p>
+    <table class="note-table">
+      <tbody>
+        <tr><td>負面感知教學行為：可能傷害學習心向，需強調心向引導，減少強調多樣的情緒、經常接觸學習刺激。</td></tr>
+        <tr><td>負面管理教學行為：減少「負面管理」，可做到管理（有效管理）以利教學正常運作。</td></tr>
+        <tr><td>積極學習：降低主動學習的障礙。</td></tr>
+        <tr><td>積極教學的教師行為：1. 事前準備課程事宜；2. 無明顯偏見干擾；3. 減少前置課程事宜；4. 給予即時回饋；5. 接受教學技術的挑戰。</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">教學目標</div>
+    <table class="note-table">
+      <tr><td>教師之目的：當學生和學科的潛在功能發揮時，教學</td></tr>
+      <tr><td>積極課程的多元教學目標：練習，花較多時間在課程內容與教材練習，然後回答，擴充練習。</td></tr>
+      <tr><td>消極課程的多元教學目標：教師發現，多方問問，共同學習，教師回答，導向單元。</td></tr>
+    </table>
+
+    <div class="sub-heading">教學設計 <span class="tag">Glaser 基本教學模式</span></div>
+    <table class="note-table">
+      <thead><tr><th>教學目標<br><small>（本質在設計教育）</small></th><th>起點行為<br><small>（引發起點評量）</small></th><th>教學過程</th><th>評量</th></tr></thead>
+      <tbody>
+        <tr>
+          <td style="vertical-align:top;font-size:.85rem">
+            <strong>分析</strong>：學生在學習前了解的背景知識所使用的學習資源（行為目標）<br>
+            <strong>陳述</strong>：課程、教學、活動（認知心理學概念）<br>
+            <strong>判斷</strong>：學生行為判斷，學生作業，評量目標達成<br>
+            <strong>描述</strong>：加強教學，加強學習重點，評量是否能達到改變
+          </td>
+          <td style="vertical-align:top;font-size:.85rem">
+            確定學生的<br>
+            判斷起點：確定學生可能<br>
+            起點評量：確定學生能力<br>
+            是否有每個學生規定學習的行動：每一特定學生所設的學習行為<br>
+            學生學習協助問題
+          </td>
+          <td style="vertical-align:top;font-size:.85rem">
+            可做到策略選擇，同學討論，設計了目標的達到程度<br>
+            1. 減少強調課程事宜<br>
+            2. 提供學習支持
+          </td>
+          <td style="vertical-align:top;font-size:.85rem">
+            是否完成科目目標，使用合格與不合格回答，活動，以達到發現<br>
+            積極評量教學功效與學習功效<br>
+            最適當的評量時機：動態的進行，隨時動態評量<br>
+            最嚴密的評量方式：隨時參照評量，標準參照評量<br>
+            其他：事前評量（先測評量），引發評量
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="hl-yellow" style="margin-top:8px">
+      最重要的是：<strong>回饋的重要動力，本質在提供學習和學習進步的回饋</strong>。
+    </div>
+
+    <div class="sub-heading">教學模式（亦稱教學方法）</div>
+    <div class="model-row">
+      <div class="model-box">
+        <h4>直接教學模式</h4>
+        <p>教師主導，學生被動接受，強調精熟學習。<span class="scholar">Rosenshine、Hunter</span></p>
+      </div>
+      <div class="model-box">
+        <h4>發現探究模式</h4>
+        <p>要求學生自行在適當時建立新的關係與推論。<span class="scholar">Bruner</span></p>
+      </div>
+      <div class="model-box">
+        <h4>探究教學模式</h4>
+        <p>由學生主動發掘問題，並尋找問題解決的過程。<span class="scholar">Bruner、Suchman</span></p>
+      </div>
+      <div class="model-box">
+        <h4>精熟學習模式</h4>
+        <p>每個人學習速率快慢不一，教學時列出需要學生精熟的標準，並給予足夠的學習時間。<span class="scholar">Bloom</span></p>
+      </div>
+      <div class="model-box">
+        <h4>個別化教學模式</h4>
+        <p>一種方式，適用大學生，採用「相同教學法」差別的主要差別在教材，個別教學法可供學生根據選擇自己學習；且學習進度則由學生自行決定。<span class="scholar">Keller 計畫</span></p>
+      </div>
+      <div class="model-box">
+        <h4>合作學習模式</h4>
+        <p>大量透過小組的合作學習方式以改善學習的內容。大量編組重視小型合作學習。<span class="scholar">鄭友超、大衛斯</span></p>
+      </div>
+      <div class="model-box">
+        <h4>價值澄清模式</h4>
+        <p>輔導學生探索，使自己有價值，引導建立自己的價值系統；本質在引導學生透過詢問，價值判斷什麼是對以便自行決定。<span class="scholar">Raths 等</span></p>
+      </div>
+    </div>
+
+    <div class="sub-heading">啟發式教學</div>
+    <table class="note-table">
+      <thead><tr><th>類型</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">問題（討論）教學法</td>
+          <td>以問題和提問引導，利用系統步驟引導學生解決問題，學以上進以及探索和確認知識。</td>
+        </tr>
+        <tr>
+          <td class="label">啟發教學法</td>
+          <td>利用各種方法，啟發豐富的學習。例如，比喻法（適時適機）。<span class="scholar">Bruner 的螺旋課程</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+
+  <!-- ── § 13 輔導 ── -->
+  <section class="section-block" id="s13">
+    <div class="section-heading">
+      <div class="section-num">13</div>
+      <h2>輔導 <span class="sub">Guidance &amp; Counseling</span></h2>
+    </div>
+
+    <div class="hl-blue">
+      輔導（Guidance）是一種協助個人了解自己、認識環境，進而做出適切決定與發展的歷程；諮商（Counseling）則是一種專業的助人關係，強調當事人的自我成長與問題解決能力。
+    </div>
+
+    <div class="sub-heading">輔導的基本概念</div>
+    <table class="note-table">
+      <thead><tr><th>概念</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">輔導的意義</td>
+          <td>幫助個人在學習、生活、生涯各方面獲得最適當的發展，達到自我了解、自我接納，進而自我實現的目標。</td>
+        </tr>
+        <tr>
+          <td class="label">輔導的目的</td>
+          <td>協助個體充分發揮潛能、做出明智決定，並解決生活中的各種問題；最終目的在培養個體自助的能力。</td>
+        </tr>
+        <tr>
+          <td class="label">輔導 vs 諮商</td>
+          <td>輔導（Guidance）範圍較廣，包含預防性與發展性；諮商（Counseling）更強調一對一的深入關係，處理較深層的心理需求。</td>
+        </tr>
+        <tr>
+          <td class="label">輔導 vs 心理治療</td>
+          <td>諮商以一般適應問題為主，心理治療（Psychotherapy）對象為具心理疾患者，時間更長，介入更深。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">輔導的功能</div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-title">預防性功能</div>
+        <p>預防問題的發生，建立學生的心理健康基礎。屬於初級預防，對象為全體學生。</p>
+      </div>
+      <div class="card">
+        <div class="card-title">發展性功能</div>
+        <p>協助個體在各發展階段完成發展任務，增進自我了解與潛能開發。</p>
+      </div>
+      <div class="card">
+        <div class="card-title">補救性功能</div>
+        <p>針對已有適應困難的學生，提供協助，使其恢復正常功能。屬於三級預防。</p>
+      </div>
+    </div>
+
+    <div class="sub-heading">主要諮商理論</div>
+    <table class="note-table">
+      <thead><tr><th>理論</th><th>代表人物</th><th>核心主張</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">個人中心諮商</td>
+          <td class="scholar">Rogers</td>
+          <td>強調當事人的自我實現潛能，諮商關係三要素：真誠（Genuineness）、無條件積極關注（UPR）、同理心（Empathy）。</td>
+        </tr>
+        <tr>
+          <td class="label">行為諮商</td>
+          <td class="scholar">Wolpe、Lazarus</td>
+          <td>以行為主義為基礎，強調可觀察的行為改變，常用系統減敏感法、行為演練、肯定訓練等技術。</td>
+        </tr>
+        <tr>
+          <td class="label">認知行為諮商（REBT）</td>
+          <td class="scholar">Ellis</td>
+          <td>非理性信念（irrational beliefs）導致情緒困擾；ABC 理論：A（事件）→ B（信念）→ C（情緒結果）。</td>
+        </tr>
+        <tr>
+          <td class="label">認知治療</td>
+          <td class="scholar">Beck</td>
+          <td>自動化思考與認知扭曲導致情緒問題，強調辨識與修正不適應的認知模式。</td>
+        </tr>
+        <tr>
+          <td class="label">心理分析諮商</td>
+          <td class="scholar">Freud、Adler、Jung</td>
+          <td>強調潛意識的影響，透過自由聯想、夢境分析探索內在衝突；Adler 重視社會興趣與生活型態。</td>
+        </tr>
+        <tr>
+          <td class="label">現實治療</td>
+          <td class="scholar">Glasser</td>
+          <td>強調當事人對自身行為的責任感，WDEP 系統：W（需求/欲望）、D（行動方向）、E（評估）、P（計畫）。</td>
+        </tr>
+        <tr>
+          <td class="label">完形諮商</td>
+          <td class="scholar">Perls</td>
+          <td>關注「此時此地（Here and Now）」，強調覺察（Awareness），協助當事人統整身心，完成未竟事務。</td>
+        </tr>
+        <tr>
+          <td class="label">存在主義諮商</td>
+          <td class="scholar">Frankl、May</td>
+          <td>關注人生意義、自由與責任、死亡焦慮等存在議題，意義治療（Logotherapy）強調尋找生命意義。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">學校輔導工作三級制度 <span class="key">（台灣重要制度）</span></div>
+    <table class="note-table">
+      <thead><tr><th>層級</th><th>對象</th><th>執行者</th><th>目標</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">初級預防<br><small>發展性輔導</small></td>
+          <td>全體學生</td>
+          <td>全體教師、導師</td>
+          <td>促進正向發展，建立心理健康基礎；班級輔導活動、生命教育、品德教育。</td>
+        </tr>
+        <tr>
+          <td class="label">二級預防<br><small>介入性輔導</small></td>
+          <td>有適應困難或高風險學生</td>
+          <td>輔導教師（專業輔導人員）</td>
+          <td>早期發現、早期介入；個別諮商、小團體輔導，預防問題惡化。</td>
+        </tr>
+        <tr>
+          <td class="label">三級預防<br><small>處遇性輔導</small></td>
+          <td>嚴重適應困難或心理疾患學生</td>
+          <td>心理師、社工師、精神科醫師（專業資源整合）</td>
+          <td>危機介入、轉介治療；結合校外專業資源，提供深度協助。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">生涯輔導理論</div>
+    <table class="note-table">
+      <thead><tr><th>理論</th><th>代表人物</th><th>要點</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">特質因素論</td>
+          <td class="scholar">Parsons、Williamson</td>
+          <td>生涯決定是個人特質（能力、興趣）與職業需求的配對（Matching）。三步驟：自我了解→職業了解→理性配合。</td>
+        </tr>
+        <tr>
+          <td class="label">生涯發展論</td>
+          <td class="scholar">Super</td>
+          <td>生涯是一生的發展歷程，分五階段：成長期（0–14）、探索期（15–24）、建立期（25–44）、維持期（45–64）、衰退期（65+）。</td>
+        </tr>
+        <tr>
+          <td class="label">人格類型論</td>
+          <td class="scholar">Holland</td>
+          <td>六種人格類型 RIASEC：實用型（R）、研究型（I）、藝術型（A）、社會型（S）、企業型（E）、事務型（C）；個人類型與工作環境一致性決定生涯滿意度。</td>
+        </tr>
+        <tr>
+          <td class="label">社會學習生涯論</td>
+          <td class="scholar">Krumboltz</td>
+          <td>生涯選擇受遺傳、環境、學習經驗和任務取向技能四大因素影響；強調偶發事件的正向利用。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">諮商倫理原則</div>
+    <ul class="note-list">
+      <li><strong>保密原則</strong>：諮商關係中的當事人資訊應予保密，但有傷害自己或他人之虞時須打破保密。</li>
+      <li><strong>知後同意（Informed Consent）</strong>：當事人有權了解諮商性質、目的、過程與限制。</li>
+      <li><strong>雙重關係的避免</strong>：諮商師應避免與當事人發展諮商關係以外的其他關係。</li>
+      <li><strong>能力限制</strong>：諮商師只能在自己的專業能力範圍內提供服務，適時轉介。</li>
+      <li><strong>文化敏感度</strong>：尊重當事人的文化背景，避免以主流文化標準評斷不同族群。</li>
+    </ul>
+  </section>
+
+  <!-- ── § 14 教育研究 ── -->
+  <section class="section-block" id="s14">
+    <div class="section-heading">
+      <div class="section-num">14</div>
+      <h2>教育研究 <span class="sub">Educational Research</span></h2>
+    </div>
+
+    <div class="hl-yellow">
+      教育研究是以科學方法對教育現象進行系統性探究，目的在發現教育規律、解決教育問題，並提升教育實踐品質。
+    </div>
+
+    <div class="sub-heading">研究的基本概念</div>
+    <table class="note-table">
+      <thead><tr><th>概念</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">研究目的</td>
+          <td>描述（Description）、解釋（Explanation）、預測（Prediction）、控制（Control）。</td>
+        </tr>
+        <tr>
+          <td class="label">研究假設</td>
+          <td>研究假設（Research Hypothesis）：依據理論或經驗提出的預期陳述。虛無假設（H₀）：假設無差異或無關係；對立假設（H₁）：假設有差異或有關係。</td>
+        </tr>
+        <tr>
+          <td class="label">變項的類型</td>
+          <td><strong>自變項（Independent Variable）</strong>：研究者操弄的變項；<strong>依變項（Dependent Variable）</strong>：被測量的結果變項；<strong>控制變項</strong>：研究中需控制的干擾因素。</td>
+        </tr>
+        <tr>
+          <td class="label">信度與效度</td>
+          <td><strong>信度（Reliability）</strong>：測量的一致性與穩定性；<strong>效度（Validity）</strong>：測量工具確實測到所要測量特質的程度。效度的重要性高於信度。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">研究方法的類型</div>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-title">量化研究（Quantitative Research）</div>
+        <p>以數字資料進行統計分析，重視客觀性與可推論性；包括實驗研究、調查研究、相關研究等。</p>
+      </div>
+      <div class="card">
+        <div class="card-title">質性研究（Qualitative Research）</div>
+        <p>以文字、影像等非數字資料深入理解現象，重視情境脈絡；包括民族誌、個案研究、紮根理論等。</p>
+      </div>
+      <div class="card">
+        <div class="card-title">混合研究（Mixed Methods）</div>
+        <p>結合量化與質性方法，取兩者之長；三角交叉驗證（Triangulation）提高研究的可信度。</p>
+      </div>
+    </div>
+
+    <div class="sub-heading">常用研究設計</div>
+    <table class="note-table">
+      <thead><tr><th>研究設計</th><th>說明</th><th>特點</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">實驗研究法</td>
+          <td>操弄自變項，控制無關變項，觀察依變項的變化；具有隨機分組（Random Assignment）。</td>
+          <td>因果推論能力最強，外在效度有限。</td>
+        </tr>
+        <tr>
+          <td class="label">準實驗研究法</td>
+          <td>無法隨機分配受試者，以既有分組（如班級）進行比較。</td>
+          <td>學校情境中最常用，內在效度較實驗研究弱。</td>
+        </tr>
+        <tr>
+          <td class="label">調查研究法</td>
+          <td>以問卷或訪談收集大量樣本的資料，了解現象的分布與關係。</td>
+          <td>樣本代表性重要；常用隨機抽樣確保推論效力。</td>
+        </tr>
+        <tr>
+          <td class="label">個案研究法</td>
+          <td>對單一個體、班級或學校進行深入、全面的探究。</td>
+          <td>深度理解，但可推論性有限。</td>
+        </tr>
+        <tr>
+          <td class="label">歷史研究法</td>
+          <td>收集、批判、分析過去的史料，重建歷史事實或詮釋歷史意義。外在批判（真實性）與內在批判（正確性）。</td>
+          <td>無法操控變項，依賴史料品質。</td>
+        </tr>
+        <tr>
+          <td class="label">行動研究法</td>
+          <td>教師針對自身教學實踐中的問題進行研究，以改進教學。強調「研究者即實踐者」。</td>
+          <td>提升教師反思能力與教學品質；非以建立普遍理論為主要目的。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">抽樣方法</div>
+    <table class="note-table">
+      <thead><tr><th>類型</th><th>方法</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label" rowspan="4">機率抽樣（隨機抽樣）</td>
+          <td>簡單隨機抽樣</td>
+          <td>每個個體被抽中的機率相等；適合母群體同質性高時使用。</td>
+        </tr>
+        <tr>
+          <td>系統抽樣</td>
+          <td>按固定間隔從名單中抽取；如每隔 10 人抽 1 人。</td>
+        </tr>
+        <tr>
+          <td>分層抽樣</td>
+          <td>先依特徵分層，再在各層中隨機抽取；可確保各層的代表性。</td>
+        </tr>
+        <tr>
+          <td>叢集抽樣</td>
+          <td>以自然群體（如班級）為抽樣單位；成本低，但抽樣誤差較大。</td>
+        </tr>
+        <tr>
+          <td class="label" rowspan="2">非機率抽樣</td>
+          <td>立意抽樣</td>
+          <td>依研究目的選取特定對象；質性研究常用。</td>
+        </tr>
+        <tr>
+          <td>方便抽樣</td>
+          <td>選取易於取得的樣本；代表性最弱。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">常用統計概念</div>
+    <table class="note-table">
+      <thead><tr><th>統計方法</th><th>用途</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">描述統計</td>
+          <td>描述資料的基本特徵：平均數（Mean）、中位數（Median）、眾數（Mode）、標準差（SD）、變異數。</td>
+        </tr>
+        <tr>
+          <td class="label">t 考驗</td>
+          <td>比較兩組平均數是否有顯著差異；分為獨立樣本 t 考驗與相依樣本 t 考驗。</td>
+        </tr>
+        <tr>
+          <td class="label">變異數分析（ANOVA）</td>
+          <td>比較三組以上平均數的差異；F 考驗達顯著後需進行事後比較（Post-hoc test）。</td>
+        </tr>
+        <tr>
+          <td class="label">相關分析</td>
+          <td>探討兩個變項之間的關聯程度；Pearson 積差相關（連續資料）、Spearman 等級相關（序位資料）。</td>
+        </tr>
+        <tr>
+          <td class="label">迴歸分析</td>
+          <td>以一個或多個自變項預測依變項；簡單迴歸（一個自變項）與多元迴歸（多個自變項）。</td>
+        </tr>
+        <tr>
+          <td class="label">卡方考驗（χ²）</td>
+          <td>比較類別變項的觀察次數與期望次數是否有顯著差異，或檢定兩類別變項的獨立性。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">Stuffbeam 的 CIPP 評鑑模式 <span class="key">（重要）</span></div>
+    <table class="note-table">
+      <thead><tr><th>評鑑類型</th><th>英文</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr><td class="label">背景評鑑</td><td>Context Evaluation</td><td>評估需求、問題與機會，確立目標；回答「應該做什麼？」</td></tr>
+        <tr><td class="label">投入評鑑</td><td>Input Evaluation</td><td>評估資源、策略與計畫可行性；回答「如何去做？」</td></tr>
+        <tr><td class="label">過程評鑑</td><td>Process Evaluation</td><td>監控計畫的執行情形，提供即時回饋；回答「是否照計畫進行？」</td></tr>
+        <tr><td class="label">成果評鑑</td><td>Product Evaluation</td><td>評量計畫的最終成效，判斷是否達成目標；回答「是否成功？」</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">研究倫理</div>
+    <ul class="note-list">
+      <li><strong>知情同意（Informed Consent）</strong>：研究參與者應在充分了解研究目的與程序後自願同意參與。</li>
+      <li><strong>保密與匿名</strong>：保護研究參與者的個人資訊，研究報告中應去識別化。</li>
+      <li><strong>不傷害原則</strong>：研究設計不得對參與者造成生理或心理傷害。</li>
+      <li><strong>誠實原則</strong>：研究者應如實呈現資料與結果，不得造假或竄改數據。</li>
+      <li><strong>弱勢族群保護</strong>：研究未成年人或特殊族群時，需有額外的倫理考量與保護措施。</li>
+    </ul>
+  </section>
+
+  <!-- ── § 15 時事問題 ── -->
+  <section class="section-block" id="s15">
+    <div class="section-heading">
+      <div class="section-num">15</div>
+      <h2>時事問題 <span class="sub">Current Issues in Education</span></h2>
+    </div>
+
+    <div class="hl-blue">
+      本單元整理台灣教育改革脈絡中的重要時事議題，包括政策沿革、課程改革、教師專業發展與國際教育趨勢。
+    </div>
+
+    <div class="sub-heading">台灣重要教育改革時間軸</div>
+    <table class="note-table">
+      <thead><tr><th>年代</th><th>重要事件</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">1968 年</td>
+          <td>九年國民義務教育</td>
+          <td>義務教育由六年延長為九年，國中教育納入義務教育體制，大幅提升基礎教育普及率。</td>
+        </tr>
+        <tr>
+          <td class="label">1994 年</td>
+          <td>四一〇教育改革運動</td>
+          <td>民間發起四大訴求：<span class="key">小班小校、廣設高中大學、推動教育現代化、制定教育基本法</span>，成為台灣教改重要里程碑。</td>
+        </tr>
+        <tr>
+          <td class="label">1999 年</td>
+          <td>《教育基本法》公布</td>
+          <td>確立教育以「人民為主體」的基本精神，保障人民受教育的權利，奠定教育改革的法律基礎。</td>
+        </tr>
+        <tr>
+          <td class="label">2001 年</td>
+          <td>九年一貫課程實施</td>
+          <td>整合學科為<span class="key">七大學習領域</span>，提出<span class="key">十大基本能力</span>，強調學科統整與生活化學習，鬆綁教科書一綱一本政策。</td>
+        </tr>
+        <tr>
+          <td class="label">2014 年</td>
+          <td>十二年國民基本教育</td>
+          <td>推動免試入學為主的高中職招生制度，強調適性發展；免除國中升高中入學考試，減輕升學壓力。</td>
+        </tr>
+        <tr>
+          <td class="label">2019 年</td>
+          <td>108 課綱正式實施</td>
+          <td>以「核心素養」為主軸，強調<span class="key">自主行動、溝通互動、社會參與</span>三大面向；引入彈性學習課程、多元選修，推動素養導向教學。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">108 課綱九大核心素養 <span class="key">（重要）</span></div>
+    <div class="model-row">
+      <div class="model-box" style="border-top-color:#c8922a">
+        <h4>自主行動</h4>
+        <p>① 身心素質與自我精進<br>② 系統思考與解決問題<br>③ 規劃執行與創新應變</p>
+      </div>
+      <div class="model-box" style="border-top-color:#1a6b9a">
+        <h4>溝通互動</h4>
+        <p>④ 符號運用與溝通表達<br>⑤ 科技資訊與媒體素養<br>⑥ 藝術涵養與美感素養</p>
+      </div>
+      <div class="model-box" style="border-top-color:#4caf60">
+        <h4>社會參與</h4>
+        <p>⑦ 道德實踐與公民意識<br>⑧ 人際關係與團隊合作<br>⑨ 多元文化與國際理解</p>
+      </div>
+    </div>
+
+    <div class="sub-heading">九年一貫七大學習領域與十大基本能力 <span class="tag">考試重點</span></div>
+    <table class="note-table">
+      <thead><tr><th colspan="2">七大學習領域</th><th colspan="2">十大基本能力</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>1</td><td>語文學習領域</td>
+          <td>1</td><td>了解自我與發展潛能</td>
+        </tr>
+        <tr>
+          <td>2</td><td>健康與體育</td>
+          <td>2</td><td>欣賞、表現與創新</td>
+        </tr>
+        <tr>
+          <td>3</td><td>社會</td>
+          <td>3</td><td>生涯規劃與終身學習</td>
+        </tr>
+        <tr>
+          <td>4</td><td>藝術與人文</td>
+          <td>4</td><td>表達、溝通與分享</td>
+        </tr>
+        <tr>
+          <td>5</td><td>自然與生活科技</td>
+          <td>5</td><td>尊重、關懷與團隊合作</td>
+        </tr>
+        <tr>
+          <td>6</td><td>數學</td>
+          <td>6</td><td>文化學習與國際了解</td>
+        </tr>
+        <tr>
+          <td>7</td><td>綜合活動</td>
+          <td>7</td><td>規劃、組織與實踐</td>
+        </tr>
+        <tr>
+          <td></td><td></td>
+          <td>8</td><td>運用科技與資訊</td>
+        </tr>
+        <tr>
+          <td></td><td></td>
+          <td>9</td><td>主動探索與研究</td>
+        </tr>
+        <tr>
+          <td></td><td></td>
+          <td>10</td><td>獨立思考與解決問題</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">當代重要教育議題</div>
+    <table class="note-table">
+      <thead><tr><th>議題</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">教師專業發展</td>
+          <td>教師不僅是知識的傳遞者，更是課程的設計者與研究者。教師專業學習社群（PLC）、教學觀察與回饋制度逐漸普及，強調同儕專業對話。</td>
+        </tr>
+        <tr>
+          <td class="label">差異化教學</td>
+          <td>面對班級內學生多元差異（能力、學習風格、文化背景），教師應靈活調整教學內容、過程、成果與學習環境，以滿足每位學生的需求。</td>
+        </tr>
+        <tr>
+          <td class="label">STEM / STEAM 教育</td>
+          <td>整合科學（Science）、科技（Technology）、工程（Engineering）、數學（Mathematics）與藝術（Arts）的跨領域教育取向，強調問題解決與創新思維。</td>
+        </tr>
+        <tr>
+          <td class="label">AI 與數位學習</td>
+          <td>人工智慧輔助學習（AI-assisted Learning）、個別化學習系統（Adaptive Learning）快速發展；教師角色從知識傳授者轉型為學習設計者與引導者。</td>
+        </tr>
+        <tr>
+          <td class="label">素養導向評量</td>
+          <td>從知識記憶型評量轉向素養導向評量，強調真實情境、問題解決、高層次思考；多元評量（檔案評量、實作評量、同儕評量）逐漸取代單一紙筆測驗。</td>
+        </tr>
+        <tr>
+          <td class="label">融合教育（Inclusive Education）</td>
+          <td>身心障礙學生與一般學生共同受教，提供最少限制環境（LRE）；個別化教育計畫（IEP）確保特殊學生獲得適性教育。</td>
+        </tr>
+        <tr>
+          <td class="label">多元文化教育</td>
+          <td>重視學生的文化背景與族群認同，原住民族教育、新住民子女教育日受重視；課程應反映多元文化觀點，避免文化霸權。</td>
+        </tr>
+        <tr>
+          <td class="label">教育機會均等</td>
+          <td>偏遠地區學校資源不足、城鄉學習落差持續存在；均優質化計畫、弱勢補助、「班班有網路」等政策嘗試縮減差距。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sub-heading">國際教育趨勢</div>
+    <table class="note-table">
+      <thead><tr><th>趨勢/計畫</th><th>說明</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="label">PISA 與 TIMSS</td>
+          <td>OECD 的 PISA（學生基礎素養國際研究計畫）與 IEA 的 TIMSS（數學及科學教育成就趨勢調查）是評估各國教育品質的重要國際指標；台灣學生在數理方面表現亮眼，閱讀與創新思維仍有成長空間。</td>
+        </tr>
+        <tr>
+          <td class="label">SDG 4 教育目標</td>
+          <td>聯合國永續發展目標第四項（SDG 4）：「確保包容和公平的優質教育，讓全民享有終身學習機會」；強調教育公平、優質教師、安全學習環境與終身學習體系。</td>
+        </tr>
+        <tr>
+          <td class="label">翻轉教室（Flipped Classroom）</td>
+          <td>課前透過影片自學，課堂用於討論、應用與問題解決；改變傳統講述式教學結構，提升學生主動學習的比重。</td>
+        </tr>
+        <tr>
+          <td class="label">專題式學習（PBL）</td>
+          <td>以真實問題或挑戰為核心，學生透過長期的探究歷程，整合知識、技能與態度，並產出具體成果；強調學習的真實性與學生自主性。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="hl-green">
+      <strong>考試常見命題方向：</strong>四一〇教改四大訴求、《教育基本法》重點條文、九年一貫七大學習領域與十大基本能力、108 課綱三大面向九大核心素養、十二年國教精神、CIPP 評鑑模式、融合教育 IEP、PISA 與 TIMSS 差異。
+    </div>
+  </section>
+
+</main>
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <p>教育概論筆記 · 依原始 HTML 文件結構重新編排 · 符合現代 HTML5 標準</p>
+</footer>
+
+</body>
+</html>
